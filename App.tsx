@@ -1,23 +1,22 @@
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  
+  ScrollView,
   Text,
   
   View,
 } from 'react-native';
-
-
-
-
-
+import FlatCards from './components/FlatCards';
 const App = () => {
   return (
-    <View>
-    <Text>Hello </Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+
+     <FlatCards/>
+    
+
+    </ScrollView>
+    </SafeAreaView>
   )
 }
 export default App;

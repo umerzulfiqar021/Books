@@ -3,32 +3,39 @@ import {
     StyleSheet,
     Text,
     View,
+    TouchableOpacity
   } from 'react-native';
   import React, {FC} from 'react';
   
   interface Props {
     author: string;
-    nameOfBook: string;
+    name_of_book: string;
     price: number;
-    coverURL: string;
+    cover: string;
     categoryColor: string;
+    onDelete: () => void
   }
   
   const Book: FC<Props> = ({
     author,
-    nameOfBook,
+    name_of_book,
     price,
-    coverURL,
+    cover,
     categoryColor,
+    onDelete,
   }) => {
     return (
       <View style={styles.container}>
         <View style={[styles.coloredSquare, {backgroundColor: categoryColor}]}>
-          <Image source={{uri: coverURL}} style={styles.image} />
+          <Image source={{uri: cover}} style={styles.image} />
+          <TouchableOpacity onPress={onDelete}> 
+            <Text style = {styles.dlt}>   Delete Book</Text>
+            </TouchableOpacity>
+         
         </View>
   
         <Text>{author}</Text>
-        <Text>{nameOfBook}</Text>
+        <Text>{name_of_book}</Text>
         <Text>{price}$</Text>
       </View>
     );
@@ -37,8 +44,12 @@ import {
   export default Book;
   
   const styles = StyleSheet.create({
+    dlt:{
+        color: 'red'
+    },
     container: {alignItems: 'center', marginBottom: 50},
     coloredSquare: {
+      
       borderRadius: 8,
       height: 130,
       width: 130,

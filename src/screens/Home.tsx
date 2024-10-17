@@ -57,7 +57,7 @@ const  getBooks =  async () => {
     try {
         const response = await axios.delete(`${URL}/${bookId}`)
       const deleted = response.data;
-      Alert.alert('Book Deleted')
+      Alert.alert('Book Deleted ☆*: .｡. o(≧▽≦)o .｡.:*☆')
   getBooks(); 
       } catch (error) {
         // console.log(error);

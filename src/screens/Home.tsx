@@ -2,6 +2,9 @@ import { Alert, FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Book from '../components/Book'
 import axios from 'axios'
+import AddButton from '../components/AddButton'
+import Modal from '../components/AddModal'
+import AddModal from '../components/AddModal'
 const Home = () => {
     const tempData = [
         {
@@ -42,7 +45,7 @@ const Home = () => {
 ]
 const [data,setData] = useState([])
  const URL = 'https://671029b3a85f4164ef2d3eaf.mockapi.io/books'
-const getBooks =  async () => {
+const  getBooks =  async () => {
     const  response = await axios.get(URL)
     setData(response.data)
    console.log(data)
@@ -62,6 +65,7 @@ const getBooks =  async () => {
         Alert.alert(error?.message);
       }
   }
+  const [modalVisible,setModalVisible] = useState(false)
  
   return (
     <View>
@@ -74,8 +78,13 @@ const getBooks =  async () => {
       renderItem={({item})=> <Book
       {...item} onDelete={()=>onDeletePress(item.id)}
       />}
-
       />
+      <View>
+         <AddButton onAddPress={()=> setModalVisible(true) }/>
+          <AddModal  visible={modalVisible} onBookAdded={getBooks} onRequestClose={()=> setModalVisible(false)}/>
+         </View>
+     
+
     </View>
   )
 }

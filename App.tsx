@@ -1,29 +1,14 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  
-  View,
-} from 'react-native';
-import FlatCards from './components/FlatCards';
-import ElevatedCards from './components/ElevatedCards';
-import FancyCard from './components/FancyCard';
-import ActionCard from './components/ActionCard';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+
 const App = () => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-
-     <FlatCards/>
-    <ElevatedCards/>
-    <FancyCard/>
-    <ActionCard/>
-    {/* <FancyCard/>
-    <FancyCard/> */}
-
-    </ScrollView>
-    </SafeAreaView>
+    <View>
+      <Text>App</Text>
+    </View>
   )
 }
-export default App;
+
+export default App
+
+const styles = StyleSheet.create({})

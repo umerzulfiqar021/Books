@@ -1,0 +1,54 @@
+const Apii = () => {
+    const [books,setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const URL = 'https://671029b3a85f4164ef2d3eaf.mockapi.io/books'
+    const post = async () => {
+        const response = await axios.post(URL,{
+            author: 'Imran-Khan',
+            cover: 'https://cssbooks.net/wp-content/uploads/2021/04/The-Forty-Rules-of-Love-By-Elif-Shafak-1.jpg',
+            name_of_book : 'Forty Rules of love'
+        })
+        const Data = response.data;
+        console.log(Data)
+    }
+   const deleteApi = async () => {
+    
+    try {
+      const response = await axios.delete(`${URL}/1`)
+    const deleted = response.data;
+    console.log(deleted)
+
+    } catch (error) {
+      // console.log(error);
+      
+      Alert.alert(error?.message);
+    }
+   }
+   const edittingPost = async ()=>{
+    const response = await axios.put(`${URL}/7`,{
+      author: 'Tabraz Shamsi',
+      cover: 'https://cssbooks.net/wp-content/uploads/2021/04/The-Forty-Rules-of-Love-By-Elif-Shafak-1.jpg',
+      name_of_book : 'Forty Rules of love'
+    })
+   }
+    const getBooks =  async () => {
+      const  response = await axios.get(URL)
+      setBooks(response.data);
+
+      setLoading(false);
+        
+    }
+   
+  return (
+    <View  style = {styles.button1}>
+       <Button  title='Press me' onPress={post} />
+       <View style = {styles.button2}> 
+        <Button title='Delete API' onPress={deleteApi}/>
+        </View>
+       <View style = {styles.button2}> 
+        <Button title='Edit' onPress={edittingPost}/>
+        </View>
+     
+    </View>
+  )
+}
